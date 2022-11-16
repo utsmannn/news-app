@@ -29,7 +29,7 @@ interface WebServices {
     }
 
     companion object {
-        private const val BASE_URL = "https://newsapiiii.org/"
+        private const val BASE_URL = "https://newsapi.org/"
 
         private fun create(): WebServices {
             return Retrofit.Builder()

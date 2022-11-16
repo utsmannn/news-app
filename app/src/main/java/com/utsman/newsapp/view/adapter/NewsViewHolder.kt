@@ -4,6 +4,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.utsman.newsapp.databinding.ItemNewsBinding
 import com.utsman.newsapp.domain.entity.News
+import com.utsman.newsapp.utils.loadUrl
 
 class NewsViewHolder(private val binding: ItemNewsBinding) : RecyclerView.ViewHolder(binding.root) {
 
@@ -11,10 +12,7 @@ class NewsViewHolder(private val binding: ItemNewsBinding) : RecyclerView.ViewHo
         textItemNewsTitle.text = news.title
         textItemNewsDesc.text = news.description
 
-        Glide.with(itemView.context)
-            .load(news.imageUrl)
-            .centerCrop()
-            .into(imageItemNews)
+        imageItemNews.loadUrl(news.imageUrl)
 
         root.setOnClickListener {
             onItemClick?.invoke(news)
