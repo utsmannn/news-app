@@ -113,5 +113,17 @@ Part 3
 - Create github repository
 - Connect to remote
 - Commit and push
+- Branching
+  - feat/xxx
 
 ## Error handling
+- Git branch feat/error_handling
+- Create fake error api
+- Create coroutine error handler
+- Connect coroutine error handler to ui event
+- Create simple UI error
+- Success!!
+- update git and branch
+- merge branch tp main
+
+## Create detail page
