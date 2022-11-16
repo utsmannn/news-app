@@ -127,3 +127,13 @@ Part 3
 - merge branch tp main
 
 ## Create detail page
+- Checkout again to main branch and create feat/detail_page
+- Check api for detail page
+  - Api for detail item not available
+  - Create from item
+- Create base activity with binding
+- Create gson string converter for convert data to string without parcelize
+- Add glide extensions
+- Add read more with chrome tabs
+- Done
+- update to git and merge to main
