@@ -7,6 +7,7 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.utsman.newsapp.databinding.ActivityMainBinding
 import com.utsman.newsapp.event.StateEvent
+import com.utsman.newsapp.utils.onFailure
 import com.utsman.newsapp.utils.onSuccess
 import com.utsman.newsapp.view.adapter.NewsAdapter
 import com.utsman.newsapp.view.viewmodel.NewsViewModel
@@ -34,10 +35,18 @@ class MainActivity : AppCompatActivity() {
         viewModel.getTopHeadline()
         viewModel.topHeadline.observe(this) { newsEvent ->
             binding.progressCircular.isVisible = newsEvent is StateEvent.Loading
+            binding.layoutError.root.isVisible = newsEvent is StateEvent.Failure
 
-            newsEvent.onSuccess {
-                newsAdapter.news = it
-            }
+            newsEvent
+                .onSuccess {
+                    newsAdapter.news = it
+                }
+                .onFailure {
+                    binding.layoutError.textError.text = it.message
+                    binding.layoutError.btnErrorTryAgain.setOnClickListener {
+                        viewModel.getTopHeadline()
+                    }
+                }
         }
     }
 

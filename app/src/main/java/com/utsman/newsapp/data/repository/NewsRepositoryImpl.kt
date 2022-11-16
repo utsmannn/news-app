@@ -32,6 +32,10 @@ class NewsRepositoryImpl(private val webServices: WebServices) : NewsRepository 
         }.collect(_topHeadline)
     }
 
+    override fun sendErrorFromExceptionHandler(throwable: Throwable) {
+        _topHeadline.value = StateEvent.Failure(throwable)
+    }
+
     override suspend fun invalidate() {
         _topHeadline.value = StateEvent.Idle()
     }

@@ -15,6 +15,8 @@ interface NewsRepository {
 
     suspend fun invalidate()
 
+    fun sendErrorFromExceptionHandler(throwable: Throwable)
+
     companion object {
         fun modules(): Module {
             return module {
